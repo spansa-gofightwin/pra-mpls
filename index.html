@@ -16,23 +16,12 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
       background-color: #f3f4f6;
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Bingkai Iframe Utama */
-    .app-container {
-      width: 100%;
-      height: 100%;
-      border: none;
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
-
-    /* --- ESTETIKA LOADING SCREEN --- */
-    .loading-screen {
+    /* --- ESTETIKA HALAMAN UTAMA --- */
+    .landing-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -44,8 +33,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease;
+      z-index: 1;
     }
 
     /* Animasi Latar Belakang */
@@ -56,7 +44,7 @@
     }
 
     /* Kotak Glassmorphism di tengah */
-    .loader-content {
+    .content-box {
       background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -69,6 +57,8 @@
       flex-direction: column;
       align-items: center;
       animation: fadeInUp 1s ease-out forwards;
+      max-width: 90%;
+      width: 350px;
     }
 
     /* Animasi masuk konten dari bawah */
@@ -78,9 +68,9 @@
     }
 
     /* Logo berdenyut elegan */
-    .loader-logo {
-      max-width: 80px;
-      max-height: 80px;
+    .app-logo {
+      max-width: 90px;
+      max-height: 90px;
       object-fit: contain;
       margin-bottom: 20px;
       animation: pulseLogo 2s infinite ease-in-out;
@@ -94,7 +84,7 @@
     }
 
     /* Tipografi Teks */
-    .loading-text {
+    .title-text {
       color: #1e3a8a;
       font-size: 20px;
       font-weight: 600;
@@ -102,97 +92,64 @@
       margin-bottom: 6px;
     }
 
-    .loading-sub {
+    .subtitle-text {
       color: #64748b;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 400;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
-    .loading-note {
+    .note-text {
       color: #3b82f6;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 300;
       margin-bottom: 25px;
       font-style: italic;
+      background: rgba(59, 130, 246, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
     }
 
-    /* Animasi Bouncing Dots */
-    .loading-dots {
-      display: flex;
-      gap: 6px;
+    /* --- TOMBOL MASUK APLIKASI --- */
+    .btn-masuk {
+      background: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      display: inline-block;
     }
 
-    .loading-dots div {
-      width: 10px;
-      height: 10px;
-      background-color: #2563eb;
-      border-radius: 50%;
-      animation: bounce 1.4s infinite ease-in-out both;
+    .btn-masuk:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.6);
     }
 
-    .loading-dots div:nth-child(1) { animation-delay: -0.32s; }
-    .loading-dots div:nth-child(2) { animation-delay: -0.16s; }
-
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); }
-      40% { transform: scale(1); }
-    }
-
-    /* Kelas untuk transisi menghilang */
-    .fade-out {
-      opacity: 0;
-      transform: scale(1.05);
-      pointer-events: none;
+    .btn-masuk:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <div id="loader" class="loading-screen">
-    <div class="loader-content">
-      <img src="https://lh3.googleusercontent.com/d/1tQPCSlVqJv08xNKeZRZhtRKC8T8PF-Uj?authuser=0" alt="Logo Spansa" class="loader-logo">
-      <div class="loading-text">UPT SMP NEGERI 1 PASURUAN</div>
-      <div class="loading-sub">Menyiapkan Portal Pra MPLS Murid...</div>
-      <div class="loading-note">*Siapkan Nomor Induk & Nomor HP (dimulai dari 8)</div>
+  <div class="landing-screen">
+    <div class="content-box">
+      <img src="https://lh3.googleusercontent.com/d/1tQPCSlVqJv08xNKeZRZhtRKC8T8PF-Uj?authuser=0" alt="Logo Spansa" class="app-logo">
+      <div class="title-text">UPT SMP NEGERI 1 PASURUAN</div>
+      <div class="subtitle-text">Portal Pra MPLS Murid</div>
+      <div class="note-text">*Siapkan Nomor Induk & Nomor HP (dimulai dari 8)</div>
       
-      <div class="loading-dots">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <!-- Tombol Link ke AppSheet/AppScript -->
+      <a href="https://script.google.com/macros/s/AKfycbwrrTvQMketpPR14e_Jm1FJErs1n-tJE0DTx34YgIYwDb5M9K54Vd9Rdu-9hW8yPJ3mBQ/exec" class="btn-masuk">MASUK APLIKASI</a>
     </div>
   </div>
-  <iframe 
-    id="gas-app"
-    src="https://script.google.com/macros/s/AKfycbwrrTvQMketpPR14e_Jm1FJErs1n-tJE0DTx34YgIYwDb5M9K54Vd9Rdu-9hW8yPJ3mBQ/exec" 
-    class="app-container"
-    allow="geolocation; microphone; camera; midi; encrypted-media;">
-  </iframe>
 
-  <script>
-    const iframe = document.getElementById('gas-app');
-    const loader = document.getElementById('loader');
-    let isAppLoaded = false;
-
-    // Fungsi utama untuk menghilangkan loader dengan transisi halus
-    function hideLoader() {
-      if (!isAppLoaded) {
-        isAppLoaded = true;
-        loader.classList.add('fade-out');
-        
-        setTimeout(() => {
-          loader.style.display = 'none';
-        }, 800);
-      }
-    }
-
-    // Strategi 1: Deteksi saat iframe selesai dimuat
-    iframe.addEventListener('load', hideLoader);
-
-    // Strategi 2: Fallback (Cadangan) Timer 7 detik
-    // Memastikan murid tidak terjebak di layar loading jika terjadi bloking sinyal 'load' dari server
-    setTimeout(hideLoader, 7000); 
-  </script>
 </body>
 </html>
